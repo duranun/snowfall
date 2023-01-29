@@ -1,10 +1,7 @@
 package com.duranun.snowflake
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import kotlin.random.Random
@@ -13,9 +10,11 @@ class SnowFlakeView(context: Context, attributeSet: AttributeSet) : View(context
     private val snowflakes = ArrayList<Snowflake>()
     private val paint = Paint().apply {
         color = Color.WHITE
+        alpha=200
+        maskFilter = BlurMaskFilter(8f,BlurMaskFilter.Blur.NORMAL)
         strokeWidth = 1f
     }
-    private val maxSnowflake = 1500
+    private val maxSnowflake = 1000
     private val bounds = RectF()
 
     override fun onDraw(canvas: Canvas) {
